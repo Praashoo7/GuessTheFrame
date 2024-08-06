@@ -1,3 +1,41 @@
+/*---------------------------------------------------------------------- THEME_SWITCH_START ----------------------------------------------------------------------*/
+
+const toggleSwitchsecond = document.querySelector('.theme-switch-second input[type="checkbox"]');
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }    
+}
+
+toggleSwitchsecond.addEventListener('change', switchTheme, false);
+function switchTheme(e) {
+  if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+  }
+  else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+  }    
+}
+const currentThemeSecond = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+if (currentThemeSecond) {
+    document.documentElement.setAttribute('data-theme', currentThemeSecond);
+
+    if (currentThemeSecond === 'dark') {
+        toggleSwitchsecond.checked = true;
+    }
+    else if (currentThemeSecond === 'light') {
+    }
+}
+
+
+
 /* ----------------------------- INFO-POPUP ----------------------------- */
 
 window.addEventListener('load', () => {
@@ -12,6 +50,7 @@ function startTest(){
 }
 
 
+
 /* ----------------------------- DONT-LEAVE-THE-TAB-MAN ----------------------------- */
 
 document.addEventListener('visibilitychange', function(){
@@ -21,6 +60,7 @@ document.addEventListener('visibilitychange', function(){
         }
     }
 })
+
 
 
 /* ----------------------------- ALSO-DONT-RELOAD ----------------------------- */
@@ -34,6 +74,7 @@ document.addEventListener('keydown', function(event){
         }
     }
 })
+
 
 
 /* ----------------------------- JASON-DATA ----------------------------- */
@@ -155,7 +196,7 @@ let id = 1
 let total = 0
 const displayQuestionProgress = questions.map((value) => {
     total += 1
-    return `<div class="box" onclick="jump(${value.id})" id="box${value.id}">${value.id}</div>`
+    return `<div class="box box-selected-bg" onclick="jump(${value.id})" id="box${value.id}">${value.id}</div>`
 })
 
 document.getElementById("questionProgress").innerHTML = displayQuestionProgress.join("")
@@ -192,6 +233,7 @@ function displayQuestion(){
     const displayQuestions = questions.map((value) => {
         if(id == value.id){
             return `
+            <div class="questionWrapper"></div>
             <img src="${value.question}" class="question" id="question${value.id}"></span>
             <div class="answers">
                 <button id="1" onclick="boxCheck(${value.id}, this.id); showSelected(${value.id});" class="ans">${value.options[0]}</button>
@@ -248,6 +290,15 @@ function jump(ID){
 
 /* ----------------------------- NEXT-QUESTION ----------------------------- */
 
+document.querySelector('.question').addEventListener('load', function() {
+    document.querySelector('.questionWrapper').classList.add('loaded');
+});
+
+document.querySelectorAll('.box').forEach(box => {
+    box.classList.remove('box-selected-bg')
+});
+document.getElementById(`box1`).classList.add('box-selected-bg')
+
 function next(){
     if(id == total){
         
@@ -255,12 +306,20 @@ function next(){
     else{
         id += 1
         displayQuestion()
+
         document.querySelectorAll('.box').forEach(box => {
-            box.style.backgroundColor = '#e0e0e0';
+            box.classList.remove('box-selected-bg')
         });
-        document.getElementById(`box${id}`).style.backgroundColor = '#ffffff';
+        document.getElementById(`box${id}`).classList.add('box-selected-bg')
+        
+        document.getElementById(`box${id}`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
         showSelected(id);
     }
+
+    document.querySelector('.question').addEventListener('load', function() {
+        document.querySelector('.questionWrapper').classList.add('loaded');
+    });
+
 }
 
 
@@ -271,12 +330,20 @@ function prev(){
     if(id>=2){
         id -= 1
         displayQuestion()
+        
         document.querySelectorAll('.box').forEach(box => {
-            box.style.backgroundColor = '#e0e0e0';
+            box.classList.remove('box-selected-bg')
         });
-        document.getElementById(`box${id}`).style.backgroundColor = '#ffffff';
+        document.getElementById(`box${id}`).classList.add('box-selected-bg')
+
+        document.getElementById(`box${id}`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
         showSelected(id);
     }
+
+    document.querySelector('.question').addEventListener('load', function() {
+        document.querySelector('.questionWrapper').classList.add('loaded');
+    });
+    
 }
 
 // ansCounter = 0
@@ -361,7 +428,6 @@ function final(){
 
 function seeAllAnswers(){
 
-    document.body.style.pointerEvents = "none"
     document.getElementById('seeAllAnswers').style.display = 'none'
     document.getElementById('questionProgress').style.display = "none"
 
