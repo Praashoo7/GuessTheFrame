@@ -1,0 +1,412 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: Titillium Web;
+    background-color: #e4e4e4;
+    opacity: 1;
+    background-image:  linear-gradient(#dbdbdb 1px, transparent 1px), linear-gradient(to right, #dbdbdb 1px, #e4e4e4 1px);
+    background-size: 50px 50px;
+}
+
+.questionProgress{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    padding: 1em;
+    background-color: #e4e4e4;
+    width: auto;
+    margin: 0 1em 0 1em;
+    border-radius: 20px 20px 0 0;
+    margin-top: 1em;
+    flex-wrap: wrap;
+    height: max-content;
+    box-shadow: rgb(186, 186, 186) 0.755px 0.755px 0px, rgb(255, 255, 255) -0.755px -0.755px 0px, rgba(0, 0, 0, 0.2) 0px 0px inset;
+}
+
+.box{
+    width: 3em;
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+    background: #e0e0e0;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.box:hover{
+    color: limegreen;
+}
+
+.questionCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2em 0 0 0;
+    background-color: #f0f0f0;
+    margin-top: -0.75em;
+    margin-bottom: 2em;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 40%;
+    z-index: 2;
+    padding: 1em;
+    box-shadow: rgb(151, 151, 151) -0.0547455px 0.755px 0px, rgb(255, 255, 255) 0.0547455px -0.755px 0px, rgba(0, 0, 0, 0.2) 0px 0px inset;
+}
+.question{
+    width: 60%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    border-radius: 15px;
+    background-color: black;
+    margin-top: 0.5em;
+}
+.answers{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2em 2em 2em 2em;
+    padding: 2em;
+    gap: 1em;
+    background-color: white;
+    border-radius: 10px;
+    width: 85%;
+}
+.ans{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    width: 100%;
+    padding: 1em;
+    border: none;
+    outline: none;
+    font-size: 0.9em;
+    font-family: Titillium Web;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #b5b5b5,
+             -1px -1px 3px #ffffff;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+.ans:active {
+    box-shadow: inset 3px 3px 6px #b5b5b5,
+              inset -3px -3px 6px #ffffff;
+    transform: translateX(0.15em) translateY(0.15em);
+}
+
+.ans::after {
+    content: "✔";
+    display: none;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: limegreen;
+}
+
+.show-after::after {
+    display: block;
+}
+
+.progress{
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    height: 1.85em;
+    overflow: hidden;
+    z-index: 2;
+    transform: translateY(-1.87em);
+    background-color: transparent;
+    border-radius: 20px 20px 0 0;
+}
+.bar{
+    width: 0%;
+    height: 0.25em;
+    bottom: 0;
+    border-radius: 10px;
+    background-color: limegreen;
+    animation: time 120s linear;
+    align-self: flex-end;
+    animation-play-state: paused;
+}
+
+@keyframes time {
+    0%{
+        width: 0%;
+    }
+    84%{
+        width: 84%;
+        background-color: limegreen;
+    }
+    85% {
+        width: 85%;
+        background-color: red
+    }
+    100%{
+        background-color: red;
+        width: 100%;
+    }
+}
+
+
+.nextPrevBtns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+    border-radius: 10px;
+}
+.next, .prev, .finish{
+    width: 100%;
+    padding: 0.5em 0 0.5em 0;
+    border: none;
+    outline: none;
+    font-family: Titillium Web;
+    font-size: 1.1em;
+    border-radius: 5px;
+    background-color: #dfdfdf;
+    color: black;
+    transition: .4s ease-in-out;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.next::after{
+    content: ">";
+    position: absolute;
+    margin-left: 0em;
+    opacity: 0;
+    margin-top: -0.1em;
+    transition: .2s ease-in-out;
+}
+.next:hover::after{
+    opacity: 1;
+    margin-left: 0.25em;
+}
+.prev::before{
+    content: "<";
+    position: absolute;
+    margin-left: -0.5em;
+    opacity: 0;
+    margin-top: -0.1em;
+    transition: .2s ease-in-out;
+}
+.prev:hover::before{
+    opacity: 1;
+    margin-left: -0.85em;
+}
+
+.next:hover, .prev:hover{
+    background-color: #bebebe;
+}
+.finish:hover{
+    background-color: limegreen;
+    color: white;
+}
+.next:active, .prev:active, .finish:active{
+    background-color: #dfdfdf;
+}
+
+.finish{
+    width: 85%;
+    margin-bottom: 1em;
+}
+
+.result{
+    padding: 0.5em 1em 0.5em 1em;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+@media screen and (max-width: 1440px){
+    .questionCard, .progress{
+        width: 60%;
+    }
+}
+@media screen and (max-width: 768px){
+    .questionCard, .progress{
+        width: 95%;
+    }
+}
+
+
+.overlay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0, 0.9);
+    font-size: 1.25em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.4s ease-in-out;
+    z-index: -2;
+}
+.divider{
+    width: 100%;
+    border: 1px solid #0000006b;
+    border-radius: 15px;
+}
+.info{
+    max-width: 600px;
+    height: auto;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 1em;
+    padding: 1.5em;
+    margin: 1em;
+}
+.info h1{
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.info span{
+    font-size: 0.85em;
+    max-height: 545px;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+.info span::-webkit-scrollbar {
+  display: none;
+}
+.info span {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+@media screen and (max-width: 430px){
+    .info{
+        height: 95dvh;
+        align-items: start;
+    }
+    .info span{
+        border: 1px solid #808080;
+        padding: 0.75em 1em 0.75em 1em;
+        border-radius: 10px;
+        overflow-x: hidden;
+    }
+}
+
+.startTest{
+    font-size: 0.9em;
+    background-color: #171717;
+    font-family: Titillium Web;
+    padding: 0.45em 1em 0.45em 1em;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    outline: none;
+    align-self: end;
+    transition: .4s ease-in-out;
+    cursor: pointer;
+}
+.startTest:hover{
+    cursor: pointer;
+    background-color: #303030;
+}
+
+.dont{
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-left: 1em;
+    transition: .15s ease-in-out;
+}
+.cinephile, .cinephobe{
+    border-radius: 15px;
+    margin-bottom: 1em;
+    width: 50%;
+}
+
+
+.seeAllAnswers{
+    display: none;
+    border: none;
+    padding: 0.75em 1em 0.75em 1em;
+    font-family: Titillium Web;
+    font-size: 1em;
+    border-radius: 10px;
+    margin-bottom: 0.75em;
+    cursor: pointer;  
+    background-color: #f1f1f1;  
+    transition: .4s ease-in-out;
+}
+.seeAllAnswers:hover{
+    background-color: limegreen;
+    color: white;
+}
+.seeAllAnswers:active{
+    opacity: 0.5;
+}
+
+.ansAll{
+    display: none;
+    opacity: 0;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1em;
+    align-items: start;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 0 0.5em 0 0.5em;
+    transition: .4s ease-in-out;
+    border-radius: 20px;
+    z-index: 2;
+    overflow: hidden;
+}
+.allAnswers{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+}
+.allAnswers img{
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    background-color: black;
+    margin-top: 0.5em;
+}
+.allAnswers span{
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: -0.75em;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Frame!</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="Icon/mainIcon.svg">
+</head>
+<body>
+
+    <div class="overlay" id="infoMain">
+        <div class="info">
+            <h1>Things to keep in mind before you Guess The Frame!</h1>
+            <div class="divider"></div>
+            <span>
+                <li>You can move between Next and Previous Questions!</li>
+                <li>You can finish the Guessing anytime by clicking the "Finish" button.</li>
+                <li>Your Answered questions are marked as "&#10003;"</li>
+                <li>You get 2 minutes to guess all questions. Keep an eye on the Progress bar!</li>
+                <li>If you can't find them in given time frame the Guessing will automatically conclude and you will get your result based on finished answers.</li>
+                <li>When you finish the Test you will see your total correct answers in form of a score! Also a "CINEPHILE" or "CINEPHOBE" indicator based on your average percentage!</li>
+                <li>Keep in mind that If you left the browser window or changed the browser tab, The test will conclude automatically!</li>
+                <li>Test will start as soon as you click the "Lemme Guess" button below. Take your time and let the Guessing begin!.</li><br>
+
+                All the Best!
+            </span>
+            <button onclick="startTest()" class="startTest" id="startTest">Lemme Guess!</button>
+        </div>
+    </div>
+
+    <div class="questionProgress" id="questionProgress">
+    </div>
+    <div class="progress" id="progress">
+        <div class="bar" id="bar"></div>
+    </div>
+
+    <div class="questionCard" id="questionCard"></div>
+
+    <button class="seeAllAnswers" id="seeAllAnswers" onclick="seeAllAnswers()">See All Answers!</button>
+    <div class="ansAll" id="ansAll"></div>
+    
+</body>
+</html>
+
+<script src="index.js"></script>
