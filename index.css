@@ -29,12 +29,23 @@ body{
     padding: 1em;
     background-color: var(--bg-color);
     margin: 1em;
-    border-radius: 20px 20px 0 0;
+    border-radius: 50px;
     flex-wrap: nowrap;
     height: max-content;
     max-width: 95%;
     overflow: auto;
     box-shadow: var(--progress-box-shadow1) 0.755px 0.755px 0px, var(--progress-box-shadow2) -0.755px -0.755px 0px, var(--progress-box-shadow3) 0px 0px inset;
+}
+.questionProgress::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+.questionProgress::-webkit-scrollbar {
+  display: none;
+}
+.questionProgress {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 /* .questionProgress::before{
     content: "";
@@ -68,10 +79,11 @@ body{
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 50px;
     transition: .2s ease-in-out;
     cursor: pointer;
     color: var(--black);
+    z-index: 5;
     background: var(--progressBox-bg);
     box-shadow: var(--progressBox-shadow1) 0px 1px 2px 0px, var(--progressBox-shadow2) 0px 1px 3px 1px;
 }
@@ -91,7 +103,7 @@ body{
     padding: 2em 0 0 0;
     color: var(--black);
     background-color: var(--question-card-bg);
-    margin-top: -1.75em;
+    margin-top: -4.75em;
     border-radius: 20px;
     overflow: hidden;
     width: 40%;
@@ -188,15 +200,14 @@ body{
     display: flex;
     align-items: end;
     justify-content: start;
-    height: 1.85em;
     overflow: hidden;
     z-index: 2;
-    transform: translateY(-2.87em);
+    transform: translateY(-6em);
     background-color: transparent;
-    border-radius: 20px 20px 0 0;
+    border-radius: 100px;
 }
 .bar{
-    width: 0%;
+    width: 2%;
     height: 0.25em;
     bottom: 0;
     border-radius: 10px;
@@ -208,7 +219,7 @@ body{
 
 @keyframes time {
     0%{
-        width: 0%;
+        width: 2%;
     }
     84%{
         width: 84%;

@@ -448,6 +448,7 @@ function seeAllAnswers(){
 
 function updateProgressWidth() {
     document.getElementById('progress').style.width = document.getElementById('questionProgress').offsetWidth + 'px';
+    document.getElementById('progress').style.height = document.getElementById('questionProgress').offsetHeight + 'px';
 }
 
 window.addEventListener('resize', updateProgressWidth);
