@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 
 
 *{
@@ -47,30 +47,6 @@ body{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-/* .questionProgress::before{
-    content: "";
-    position: fixed;
-    top: 1.85%;
-    left: 2.343%;
-    border-radius: 20px 0 0 0;
-    height: 10%;
-    width: 100%;
-    background-color: var(--bg-color);
-    mask-image: linear-gradient(to right, black calc(12% - 48px), transparent 12%);
-    box-shadow: var(--progress-box-shadow1) 0.755px 0.755px 0px, var(--progress-box-shadow2) -0.755px -0.755px 0px, var(--progress-box-shadow3) 0px 0px inset;
-}
-.questionProgress::after{
-    content: "";
-    position: fixed;
-    top: 1.85%;
-    right: 2.346%;
-    border-radius: 0 21px 0 0;
-    height: 10%;
-    width: 100%;
-    background-color: var(--bg-color);
-    mask-image: linear-gradient(to left, black calc(12% - 48px), transparent 12%);
-    box-shadow: var(--progress-box-shadow1) 0.755px 0.755px 0px, var(--progress-box-shadow2) -0.755px -0.755px 0px, var(--progress-box-shadow3) 0px 0px inset;
-} */
 
 .box{
     min-width: 3em;
