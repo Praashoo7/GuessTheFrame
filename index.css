@@ -119,9 +119,9 @@ body{
     background-color: black;
 }
 .questionWrapper{
-    width: 60%;
+    width: 57.75%;
     top: 2%;
-    border-radius: 10px;
+    border-radius: 15px;
     opacity: 1;
     aspect-ratio: 16/9;
     position: absolute;

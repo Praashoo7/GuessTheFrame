@@ -36,44 +36,44 @@ if (currentThemeSecond) {
 
 
 
-/* ----------------------------- INFO-POPUP ----------------------------- */
+// /* ----------------------------- INFO-POPUP ----------------------------- */
 
-window.addEventListener('load', () => {
-    document.getElementById('infoMain').style.opacity = 1
-    document.getElementById('infoMain').style.zIndex = 9999
-})
-function startTest(){
-    document.getElementById('infoMain').style.opacity = 0
-    document.getElementById('infoMain').style.zIndex = -2
-    document.getElementById('bar').style.animationPlayState = 'running'
-    document.addEventListener('contextmenu', event => event.preventDefault());
-}
-
-
-
-/* ----------------------------- DONT-LEAVE-THE-TAB-MAN ----------------------------- */
-
-document.addEventListener('visibilitychange', function(){
-    if(document.visibilityState == 'hidden'){
-        if(window.getComputedStyle(document.getElementById('infoMain')).opacity == 0){
-            final()
-        }
-    }
-})
+// window.addEventListener('load', () => {
+//     document.getElementById('infoMain').style.opacity = 1
+//     document.getElementById('infoMain').style.zIndex = 9999
+// })
+// function startTest(){
+//     document.getElementById('infoMain').style.opacity = 0
+//     document.getElementById('infoMain').style.zIndex = -2
+//     document.getElementById('bar').style.animationPlayState = 'running'
+//     document.addEventListener('contextmenu', event => event.preventDefault());
+// }
 
 
 
-/* ----------------------------- ALSO-DONT-RELOAD ----------------------------- */
+// /* ----------------------------- DONT-LEAVE-THE-TAB-MAN ----------------------------- */
 
-document.addEventListener('keydown', function(event){
-    if(window.getComputedStyle(document.getElementById('infoMain')).opacity == 0){
-        if(event.key == 'F5' ||
-            (event.ctrlKey && event.key === 'r') ||
-            (event.metaKey && event.key === 'r')){
-                event.preventDefault()
-        }
-    }
-})
+// document.addEventListener('visibilitychange', function(){
+//     if(document.visibilityState == 'hidden'){
+//         if(window.getComputedStyle(document.getElementById('infoMain')).opacity == 0){
+//             final()
+//         }
+//     }
+// })
+
+
+
+// /* ----------------------------- ALSO-DONT-RELOAD ----------------------------- */
+
+// document.addEventListener('keydown', function(event){
+//     if(window.getComputedStyle(document.getElementById('infoMain')).opacity == 0){
+//         if(event.key == 'F5' ||
+//             (event.ctrlKey && event.key === 'r') ||
+//             (event.metaKey && event.key === 'r')){
+//                 event.preventDefault()
+//         }
+//     }
+// })
 
 
 
