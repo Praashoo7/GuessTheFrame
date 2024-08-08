@@ -5,4 +5,4 @@
 ![Readme Image](ReadMe-Images/D1.png)
 
 
-GoodLuck Guessing the Frame!
+Good Luck Guessing the Frame!
