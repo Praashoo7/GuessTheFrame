@@ -36,44 +36,44 @@ if (currentThemeSecond) {
 
 
 
-// /* ----------------------------- INFO-POPUP ----------------------------- */
+/* ----------------------------- INFO-POPUP ----------------------------- */
 
-// window.addEventListener('load', () => {
-//     document.getElementById('infoMain').style.opacity = 1
-//     document.getElementById('infoMain').style.zIndex = 9999
-// })
-// function startTest(){
-//     document.getElementById('infoMain').style.opacity = 0
-//     document.getElementById('infoMain').style.zIndex = -2
-//     document.getElementById('bar').style.animationPlayState = 'running'
-//     document.addEventListener('contextmenu', event => event.preventDefault());
-// }
-
-
-
-// /* ----------------------------- DONT-LEAVE-THE-TAB-MAN ----------------------------- */
-
-// document.addEventListener('visibilitychange', function(){
-//     if(document.visibilityState == 'hidden'){
-//         if(window.getComputedStyle(document.getElementById('infoMain')).opacity == 0){
-//             final()
-//         }
-//     }
-// })
+window.addEventListener('load', () => {
+    document.getElementById('infoMain').style.opacity = 1
+    document.getElementById('infoMain').style.zIndex = 9999
+})
+function startTest(){
+    document.getElementById('infoMain').style.opacity = 0
+    document.getElementById('infoMain').style.zIndex = -2
+    document.getElementById('bar').style.animationPlayState = 'running'
+    document.addEventListener('contextmenu', event => event.preventDefault());
+}
 
 
 
-// /* ----------------------------- ALSO-DONT-RELOAD ----------------------------- */
+/* ----------------------------- DONT-LEAVE-THE-TAB-MAN ----------------------------- */
 
-// document.addEventListener('keydown', function(event){
-//     if(window.getComputedStyle(document.getElementById('infoMain')).opacity == 0){
-//         if(event.key == 'F5' ||
-//             (event.ctrlKey && event.key === 'r') ||
-//             (event.metaKey && event.key === 'r')){
-//                 event.preventDefault()
-//         }
-//     }
-// })
+document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState == 'hidden'){
+        if(window.getComputedStyle(document.getElementById('infoMain')).opacity == 0){
+            final()
+        }
+    }
+})
+
+
+
+/* ----------------------------- ALSO-DONT-RELOAD ----------------------------- */
+
+document.addEventListener('keydown', function(event){
+    if(window.getComputedStyle(document.getElementById('infoMain')).opacity == 0){
+        if(event.key == 'F5' ||
+            (event.ctrlKey && event.key === 'r') ||
+            (event.metaKey && event.key === 'r')){
+                event.preventDefault()
+        }
+    }
+})
 
 
 
@@ -236,10 +236,10 @@ function displayQuestion(){
             <div class="questionWrapper"></div>
             <img src="${value.question}" class="question" id="question${value.id}"></span>
             <div class="answers">
-                <button id="1" onclick="boxCheck(${value.id}, this.id); showSelected(${value.id});" class="ans">${value.options[0]}</button>
-                <button id="2" onclick="boxCheck(${value.id}, this.id); showSelected(${value.id});" class="ans">${value.options[1]}</button>
-                <button id="3" onclick="boxCheck(${value.id}, this.id); showSelected(${value.id});" class="ans">${value.options[2]}</button>
-                <button id="4" onclick="boxCheck(${value.id}, this.id); showSelected(${value.id});" class="ans">${value.options[3]}</button>
+                <button id="1" onclick="boxCheck(${value.id}, this.id); showSelected(${value.id});" class="ans"><span class="btnOptionText">${value.options[0]}</span></button>
+                <button id="2" onclick="boxCheck(${value.id}, this.id); showSelected(${value.id});" class="ans"><span class="btnOptionText">${value.options[1]}</span></button>
+                <button id="3" onclick="boxCheck(${value.id}, this.id); showSelected(${value.id});" class="ans"><span class="btnOptionText">${value.options[2]}</span></button>
+                <button id="4" onclick="boxCheck(${value.id}, this.id); showSelected(${value.id});" class="ans"><span class="btnOptionText">${value.options[3]}</span></button>
             </div>
             <div class="nextPrevBtns">
                 <button class="prev" onclick="prev(); showSelected();">Prev</button>
@@ -301,7 +301,16 @@ document.getElementById(`box1`).classList.add('box-selected-bg')
 
 function next(){
     if(id == total){
+        id=1
+        displayQuestion()
+
+        document.querySelectorAll('.box').forEach(box => {
+            box.classList.remove('box-selected-bg')
+        });
+        document.getElementById(`box${id}`).classList.add('box-selected-bg')
         
+        document.getElementById(`box${id}`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+        showSelected(id);
     }
     else{
         id += 1
@@ -318,6 +327,18 @@ function next(){
 
     document.querySelector('.question').addEventListener('load', function() {
         document.querySelector('.questionWrapper').classList.add('loaded');
+    });
+
+    document.querySelectorAll('.btnOptionText').forEach((btn) => {
+        btn.style.opacity = 0;
+    });
+
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            document.querySelectorAll('.btnOptionText').forEach((btn) => {
+                btn.style.opacity = 1;
+            });
+        }, 80);
     });
 
 }
@@ -339,9 +360,33 @@ function prev(){
         document.getElementById(`box${id}`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
         showSelected(id);
     }
+    else{
+        id = 15
+        displayQuestion()
+        
+        document.querySelectorAll('.box').forEach(box => {
+            box.classList.remove('box-selected-bg')
+        });
+        document.getElementById(`box${id}`).classList.add('box-selected-bg')
+
+        document.getElementById(`box${id}`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+        showSelected(id);
+    }
 
     document.querySelector('.question').addEventListener('load', function() {
         document.querySelector('.questionWrapper').classList.add('loaded');
+    });
+
+    document.querySelectorAll('.btnOptionText').forEach((btn) => {
+        btn.style.opacity = 0;
+    });
+
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            document.querySelectorAll('.btnOptionText').forEach((btn) => {
+                btn.style.opacity = 1;
+            });
+        }, 80);
     });
     
 }
@@ -381,68 +426,84 @@ let result = ""
 countAns = 0
 function final(){
 
-    document.body.style.height = "100dvh"
-    document.body.style.display = 'flex'
-    document.body.style.alignItems = 'center'
-    document.body.style.justifyContent = 'center'
-    document.getElementById('questionProgress').style.display = "none"
-    document.addEventListener('contextmenu', event => event.preventDefault());
-    document.getElementById('bar').style.display = 'none'
-    document.getElementById('seeAllAnswers').style.display = 'block'
-    document.getElementById('questionProgress').style.borderRadius = '20px'
+    document.querySelector('.questionCard').style.opacity = 0;
+    document.getElementById('questionProgress').style.opacity = 0
 
-    document.querySelectorAll('.box').forEach(function(box){
-        box.style.backgroundColor = '#e0e0e0'
-    })
+    setTimeout(() => {
+        document.body.style.height = "100dvh"
+        document.body.style.display = 'flex'
+        document.body.style.alignItems = 'center'
+        document.body.style.justifyContent = 'center'
+        document.getElementById('questionProgress').style.display = "none"
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.getElementById('bar').style.display = 'none'
+        document.getElementById('seeAllAnswers').style.display = 'block'
+        document.getElementById('questionProgress').style.borderRadius = '20px'
 
-    questions.map((value) => {
-        ansData.map((valueAns) => {
-            if(value.id == valueAns.questionID){
-                if(value.ansID == valueAns.answerID){
-                    countAns += 1
-                }
-            }
+        document.querySelectorAll('.box').forEach(function(box){
+            box.style.backgroundColor = '#e0e0e0'
         })
-    })
 
-    console.log(countAns)
+        questions.map((value) => {
+            ansData.map((valueAns) => {
+                if(value.id == valueAns.questionID){
+                    if(value.ansID == valueAns.answerID){
+                        countAns += 1
+                    }
+                }
+            })
+        })
 
-    if((parseInt(countAns)*100)/parseInt(total) > 50){
-        result = "CINEPHILE"
-        document.getElementById("questionCard").innerHTML = `
-        You scored <span style="color: limegreen; font-weight: bold;">${countAns}</span> out of ${total} Questions!
-        <span class="result" style="background-color: limegreen;" id="result">${result}</span>
-        <img class="cinephile" src="RES/CINEPHILE.gif">
-        `
-    }
-    else{
-        result = "CINEPHOBE"
-        document.getElementById("questionCard").innerHTML = `
-        You scored <span style="color: red; font-weight: bold;">${countAns}</span> out of ${total} Questions!
-        <span class="result" style="background-color: red;" id="result">${result}</span>
-        <img class="cinephobe" src="RES/CINEPHOBE.gif">
-        `
-    }
+        console.log(countAns)
+
+        if((parseInt(countAns)*100)/parseInt(total) > 50){
+            result = "CINEPHILE"
+            document.getElementById("questionCard").innerHTML = `
+            You scored <span style="color: limegreen; font-weight: bold;">${countAns}</span> out of ${total} Questions!
+            <span class="result" style="background-color: limegreen;" id="result">${result}</span>
+            <img class="cinephile" src="RES/CINEPHILE.gif">
+            `
+        }
+        else{
+            result = "CINEPHOBE"
+            document.getElementById("questionCard").innerHTML = `
+            You scored <span style="color: red; font-weight: bold;">${countAns}</span> out of ${total} Questions!
+            <span class="result" style="background-color: red;" id="result">${result}</span>
+            <img class="cinephobe" src="RES/CINEPHOBE.gif">
+            `
+        }
+    }, 200);
+
+    setTimeout(() => {
+        document.querySelector('.questionCard').style.opacity = 1;
+    }, 200);
 }
 
 
 function seeAllAnswers(){
 
-    document.getElementById('seeAllAnswers').style.display = 'none'
-    document.getElementById('questionProgress').style.display = "none"
+    document.querySelector('.questionCard').style.opacity = 0;
 
-    const allAnswers = questions.map((value) => {
-        return `
-            <div class="allAnswers">
-                <img src="${value.question}">
-                <span>${value.answer}</span>
-            </div>
-        `
-    })
-    document.getElementById('ansAll').innerHTML = allAnswers.join(" ")
-    document.getElementById("questionCard").innerHTML = `<div class="ansAll" id="ansAll">`+document.getElementById('ansAll').innerHTML+`</div>`
-    document.getElementById('ansAll').style.display = 'grid'
-    document.getElementById('ansAll').style.opacity = 1
+    setTimeout(() => {
+        document.getElementById('seeAllAnswers').style.display = 'none'
+
+        const allAnswers = questions.map((value) => {
+            return `
+                <div class="allAnswers">
+                    <img src="${value.question}">
+                    <span>${value.answer}</span>
+                </div>
+            `
+        })
+        document.getElementById('ansAll').innerHTML = allAnswers.join(" ")
+        document.getElementById("questionCard").innerHTML = `<div class="ansAll" id="ansAll">`+document.getElementById('ansAll').innerHTML+`</div>`
+        document.getElementById('ansAll').style.display = 'grid'
+        document.getElementById('ansAll').style.opacity = 1
+    }, 200);
+
+    setTimeout(() => {
+        document.querySelector('.questionCard').style.opacity = 1;
+    }, 200);
 }
 
 
