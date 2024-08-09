@@ -13,7 +13,7 @@ Apply your "Cinephile" brain and enjoy the Beautiful frames while doing it!<br><
 ![Readme Image](ReadMe-Images/D1.png)<br>
 
 
-Good Luck Guessing the Frames!<br><br>
+Good Luck Guessing the Frames!<br>
 
 ## License
 
