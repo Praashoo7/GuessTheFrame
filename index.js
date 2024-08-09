@@ -1,37 +1,20 @@
 /*---------------------------------------------------------------------- THEME_SWITCH_START ----------------------------------------------------------------------*/
 
-const toggleSwitchsecond = document.querySelector('.theme-switch-second input[type="checkbox"]');
+const toggleSwitch = document.querySelector('.theme-switch-second input[type="checkbox"]');
 
 function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    }
-    else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }    
+    const theme = e.target.checked ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
 }
 
-toggleSwitchsecond.addEventListener('change', switchTheme, false);
-function switchTheme(e) {
-  if (e.target.checked) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-  }
-  else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-  }    
-}
-const currentThemeSecond = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+toggleSwitch.addEventListener('change', switchTheme, false);
 
-if (currentThemeSecond) {
-    document.documentElement.setAttribute('data-theme', currentThemeSecond);
+const currentTheme = localStorage.getItem('theme');
 
-    if (currentThemeSecond === 'dark') {
-        toggleSwitchsecond.checked = true;
-    }
-    else if (currentThemeSecond === 'light') {
-    }
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    toggleSwitch.checked = currentTheme === 'dark';
 }
 
 
