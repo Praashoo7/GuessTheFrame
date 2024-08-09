@@ -10,7 +10,7 @@ Apply your "Cinephile" brain and enjoy the Beautiful frames while doing it!<br><
 
 - Home [Dark-Mode]
 
-![Readme Image](ReadMe-Images/D1.png)<br><br>
+![Readme Image](ReadMe-Images/D1.png)<br>
 
 
 Good Luck Guessing the Frames!<br><br>
