@@ -433,10 +433,49 @@ body{
     margin-left: 1em;
     transition: .15s ease-in-out;
 }
+
 .cinephile, .cinephobe{
     border-radius: 15px;
     margin-bottom: 1em;
     width: 50%;
+    aspect-ratio: 16/9;
+}
+.cinephobe{
+    aspect-ratio: 1/1;
+}
+.cinephobeLoad{
+    position: absolute;
+    width: 48.25%;
+    aspect-ratio: 1/1;
+    bottom: 0;
+    margin-bottom: 2em;
+    border-radius: 15px;
+    opacity: 1;
+    justify-self: flex-end;
+    background: var(--image-loader-bg);
+    background: linear-gradient(110deg, var(--image-shine1) 8%, var(--image-shine2) 18%, var(--image-shine1) 33%);
+    background-size: 200% 400%;
+    -webkit-animation: 4.5s shine linear infinite;
+            animation: 4.5s shine linear infinite;
+    transition: all .4s ease-in-out;
+    z-index: 5;
+}
+.cinephileLoad{
+    position: absolute;
+    width: 48.25%;
+    aspect-ratio: 16/9;
+    bottom: 0;
+    margin-bottom: 2em;
+    border-radius: 15px;
+    opacity: 1;
+    justify-self: flex-end;
+    background: var(--image-loader-bg);
+    background: linear-gradient(110deg, var(--image-shine1) 8%, var(--image-shine2) 18%, var(--image-shine1) 33%);
+    background-size: 200% 400%;
+    -webkit-animation: 4.5s shine linear infinite;
+            animation: 4.5s shine linear infinite;
+    transition: all .4s ease-in-out;
+    z-index: 5;
 }
 
 
@@ -478,7 +517,17 @@ body{
     z-index: 2;
     overflow: hidden;
 }
+@media screen and (max-width: 400px) {
+    .ansAll{
+        overflow: scroll;
+        border-radius: 15px;
+        padding: 0.5em 1em 0.5em 1em;
+        border: 1px solid var(--info-border);
+    }
+}
+
 .allAnswers{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -497,6 +546,28 @@ body{
     font-weight: bold;
     font-size: 1em;
     margin-top: -0.75em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    cursor: context-menu;
+}
+.allAnsIMGLoad{
+    position: absolute;
+    width: 100%;
+    margin-bottom: 1.25em;
+    aspect-ratio: 16/9;
+    border-radius: 5px;
+    opacity: 1;
+    justify-self: flex-end;
+    background: var(--image-loader-bg);
+    background: linear-gradient(110deg, var(--image-shine1) 8%, var(--image-shine2) 18%, var(--image-shine1) 33%);
+    background-size: 200% 400%;
+    -webkit-animation: 4.5s shine linear infinite;
+            animation: 4.5s shine linear infinite;
+    transition: all .4s ease-in-out;
+    z-index: 5;
 }
 
 

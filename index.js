@@ -463,6 +463,7 @@ function final(){
         document.body.style.display = 'flex'
         document.body.style.alignItems = 'center'
         document.body.style.justifyContent = 'center'
+        document.getElementById("questionCard").style.height = "auto"
         document.getElementById('questionProgress').style.display = "none"
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.getElementById('bar').style.display = 'none'
@@ -483,23 +484,33 @@ function final(){
             })
         })
 
-        console.log(countAns)
-
         if((parseInt(countAns)*100)/parseInt(total) > 50){
             result = "CINEPHILE"
             document.getElementById("questionCard").innerHTML = `
             You scored <span style="color: limegreen; font-weight: bold;">${countAns}</span> out of ${total} Questions!
             <span class="result" style="background-color: limegreen;" id="result">${result}</span>
-            <img class="cinephile" src="RES/CINEPHILE.gif">
+            <div class="cinephileLoad" id="cinephileLoad"></div>
+            <img class="cinephile" id="cinephile" src="RES/CINEPHILE.gif">
             `
+
+            document.getElementById('cinephile').addEventListener('load', function() {
+                document.getElementById('cinephileLoad').style.opacity = 0
+                document.getElementById('cinephileLoad').style.zIndex = -5
+            })
         }
         else{
             result = "CINEPHOBE"
             document.getElementById("questionCard").innerHTML = `
             You scored <span style="color: red; font-weight: bold;">${countAns}</span> out of ${total} Questions!
             <span class="result" style="background-color: red;" id="result">${result}</span>
-            <img class="cinephobe" src="RES/CINEPHOBE.gif">
+            <div class="cinephobeLoad" id="cinephobeLoad"></div>
+            <img class="cinephobe" id="cinephobe" src="RES/CINEPHOBE.gif">
             `
+
+            document.getElementById('cinephobe').addEventListener('load', function() {
+                document.getElementById('cinephobeLoad').style.opacity = 0
+                document.getElementById('cinephobeLoad').style.zIndex = -5
+            })
         }
     }, 200);
 
@@ -511,6 +522,9 @@ function final(){
 
 function seeAllAnswers(){
 
+    if(window.innerWidth < 400){
+        document.getElementById("questionCard").style.height = "80%"
+    }
     document.querySelector('.questionCard').style.opacity = 0;
 
     setTimeout(() => {
@@ -519,11 +533,13 @@ function seeAllAnswers(){
         const allAnswers = questions.map((value) => {
             return `
                 <div class="allAnswers">
-                    <img src="${value.question}">
-                    <span>${value.answer}</span>
+                    <div class="allAnsIMGLoad" id="allAnsIMGLoad"></div>
+                    <img id="allAnsIMG" src="${value.question}">
+                    <span title="${value.answer}">${value.answer}</span>
                 </div>
             `
         })
+
         document.getElementById('ansAll').innerHTML = allAnswers.join(" ")
         document.getElementById("questionCard").innerHTML = `<div class="ansAll" id="ansAll">`+document.getElementById('ansAll').innerHTML+`</div>`
         document.getElementById('ansAll').style.display = 'grid'
@@ -533,6 +549,24 @@ function seeAllAnswers(){
     setTimeout(() => {
         document.querySelector('.questionCard').style.opacity = 1;
     }, 200);
+
+    function imgLoad() {
+        document.querySelectorAll('.allAnswers img').forEach(img => {
+            const hideLoader = () => {
+                const loader = img.parentElement.querySelector('.allAnsIMGLoad');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    loader.style.zIndex = '-5';
+                }
+            };
+    
+            if (img.complete) hideLoader();
+            else img.addEventListener('load', hideLoader);
+            img.addEventListener('error', hideLoader);
+        });
+    }
+
+    setTimeout(imgLoad, 200);
 }
 
 
