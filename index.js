@@ -251,7 +251,7 @@ function displayQuestion(){
         }
     })
     document.getElementById("questionCard").innerHTML = displayQuestions.join(" ")
-    showSelected(id);
+    setTimeout(() => showSelected(id), 0);
 }
 
 
@@ -324,6 +324,9 @@ function next(){
         document.getElementById(`box${id}`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
         showSelected(id);
     }
+    
+    displayQuestion()
+    showSelected(id)
 
     document.querySelector('.question').addEventListener('load', function() {
         document.querySelector('.questionWrapper').classList.add('loaded');
