@@ -172,6 +172,67 @@ questions = [
 
 
 
+// /* ---------------------------------------- SOON ---------------------------------------- */
+
+// let Today = new Date().getDate()
+// let start = 0
+// let end = 15
+
+// function onDayChange(){
+//     let startIndex = start+15
+//     let endIndex = end+15
+
+//     if(endIndex == questions.length + 15){
+//         placeIDs = []
+//         let startIndex = 0
+//         let endIndex = 15
+//         questions.slice(startIndex, endIndex).map((item) => {
+//             placeIDs.push({
+//                 "id": item.id,
+//                 "question": item.question,
+//                 "options": item.options,
+//                 "answer": item.answer,
+//                 "ansID": item.ansID
+//             });
+//         });
+//         console.log(placeIDs)
+//     }
+//     else{
+//         placeIDs = []
+//         questions.slice(startIndex, endIndex).map((item) => {
+//             placeIDs.push({
+//                 "id": item.id,
+//                 "question": item.question,
+//                 "options": item.options,
+//                 "answer": item.answer,
+//                 "ansID": item.ansID
+//             });
+//         });
+//         console.log(placeIDs)
+//     }
+// }
+
+// placeIDs = []
+// questions.slice(0, 15).map((item) => {
+//     placeIDs.push({
+//         "id": item.id,
+//         "question": item.question,
+//         "options": item.options,
+//         "answer": item.answer,
+//         "ansID": item.ansID
+//     });
+// });
+// console.log(placeIDs)
+
+// setInterval(() => {
+//     const newDay = new Date().getDate();
+//     if(newDay!==Today){
+//         Today = newDay
+//         onDayChange()
+//     }
+// }, 60000);
+
+
 
 /* ----------------------------- QUESTION-PROGRESS-DATA ----------------------------- */
 
@@ -376,24 +437,6 @@ function prev(){
     });
     
 }
-
-// ansCounter = 0
-// q = []
-// function checkAns(qID, aID){
-//     questions.map((value) => {
-//         console.log("QUESTIONS : ",qID, value.questionID)
-//         if(qID == value.questionID){
-//             console.log("ANSWERS : ",aID,value.answerID)
-//             aID == value.answerID;
-//             ansCounter += 1
-//             console.log("IN",ansCounter)
-//         }
-//     })
-//     console.log("OUT",ansCounter)
-//     if(qID == total){
-//         final(ansCounter)
-//     }
-// }
 
 
 
