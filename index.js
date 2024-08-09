@@ -60,7 +60,7 @@ document.addEventListener('keydown', function(event){
 
 
 
-/* ----------------------------- JASON-DATA ----------------------------- */
+/* ----------------------------- JSON-DATA ----------------------------- */
 
 questions = [
       {
