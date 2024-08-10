@@ -464,6 +464,7 @@ function final(){
         document.body.style.alignItems = 'center'
         document.body.style.justifyContent = 'center'
         document.getElementById("questionCard").style.height = "auto"
+        document.getElementById("questionCard").style.marginTop = "0em"
         document.getElementById('questionProgress').style.display = "none"
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.getElementById('bar').style.display = 'none'

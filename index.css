@@ -109,6 +109,7 @@ body{
     color: var(--black);
     background-color: var(--question-card-bg);
     margin-top: -4.75em;
+    margin-bottom: 1em;
     border-radius: 20px;
     overflow: hidden;
     width: 40%;
@@ -717,6 +718,18 @@ body{
     scale: 1;
     border-radius: 50%;
   }
+
+
+@media screen and (max-width: 500px) {
+    .answers, .nextPrevBtns, .finish{
+        width: 95%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .answers{
+        padding: 1em;
+    }
+}
 
 
   /* SMALL-DEVICE */
