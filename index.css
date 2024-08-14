@@ -575,7 +575,6 @@ body{
 /* THEME-SWITCH */
 
 :root {
-    /* Start of dark/light mode css3 variables for website */
     --bg-color: #e4e4e4;
     --bg-lines: #dbdbdb;
     --progress-box-shadow1: #bababa;
@@ -606,9 +605,7 @@ body{
     --small-device-card-border: rgb(210, 210, 210);
     --info-border: #c2c2c2;
   }
-  /* dark mode css variables */
   [data-theme="dark"] {
-    /* Start of dark/light mode css3 variables for website */
     --bg-color: #1b1b1b;
     --bg-lines: #242424;
     --progress-box-shadow1: #454545;
@@ -655,7 +652,7 @@ body{
     position: relative;
     font-family: Bad Script;
 }
-/* The switch - the box around the slider */
+
 .theme-switch-second {
     display: flex;
     align-items: center;
@@ -670,14 +667,12 @@ body{
     border-radius: 10px;
   }
   
-  /* Hide default HTML checkbox */
   .theme-switch-second .checkboxsecond {
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
-  /* The slider */
+
   .slider-second {
     cursor: pointer;
     width: 2em;
