@@ -2,20 +2,16 @@
 
 const toggleSwitch = document.querySelector('.theme-switch-second input[type="checkbox"]');
 
-function switchTheme(e) {
-    const theme = e.target.checked ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+function switchTheme() {
+    if (toggleSwitch.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
 }
 
-toggleSwitch.addEventListener('change', switchTheme, false);
-
-const currentTheme = localStorage.getItem('theme');
-
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    toggleSwitch.checked = currentTheme === 'dark';
-}
+toggleSwitch.addEventListener('change', switchTheme);
+switchTheme();
 
 
 
